@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   counterstrike:
-    image: mrflobow/steamcmd
+    image: ich777/steamcmd:cstrike1.6
     container_name: gs-cstrike-16
     env_file:
       - stack.env
