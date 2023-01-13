@@ -1,0 +1,22 @@
+version: '3.3'
+services:
+  counterstrike:
+    image: mrflobow/steamcmd
+    container_name: gs-cstrike-16
+    env_file:
+      - stack.env
+    dns:
+      - 127.0.0.1
+      - 1.1.1.1      
+      - 8.8.8.8
+    volumes:
+      - ${HOST_STEAMCMD_FOLDER}:/serverdata/steamcmd
+      - ${HOST_GAME_SERVER_FILES}:/serverdata/serverfiles
+      #Option load custom server cfg
+      - ${SERVER_CFG}:/serverdata/serverfiles/${GAME_NAME}/cfg/server.cfg
+    networks:
+      macvlan01:
+        ipv4_address: "${GAMESERVER_IP}"
+networks:
+  macvlan01:
+    external: true
